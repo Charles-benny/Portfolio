@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <title>Experience</title>
+</head>
+<body>
+    <div class="background-container"></div>
+    <a href="Home.html" style="text-decoration: none;">
+        <button class="Btn">
+          <span class="svgContainer">
+            <img src="image/home.svg" alt="Home Icon" height="24" />
+          </span>
+          <span class="BG"></span>
+        </button>
+      </a>
+    <div class="banner-container">
+        <div class="banner">
+            <div class="content">
+                <h1>
+                    <a href="#" class="logo" style="color: aliceblue; text-decoration: none; animation: lights 10s 750ms linear infinite;">
+                        EXPERIENCE
+                    </a>
+                </h1>
+            </div>
+                <div class="cards-container">
+                    <!-- Card 1 -->
+                    <div class="card">
+                        <p class="heading">Python Intern</p>
+                        <p>Evolve Robotics Lab</p>
+                        <p>ML & CV Development</p>
+                        <button class="know-more-btn" onclick="showPopup('python-intern-popup')">➜</button>
+                    </div>
+                
+                    <!-- Card 2 -->
+                    <div class="card">
+                        <p class="heading">Data Analytics</p>
+                        <p>MedTour Easy</p>
+                        <p>Healthcare Analytics</p>
+                        <button class="know-more-btn" onclick="showPopup('data-analytics-popup')">➜</button>
+                    </div>
+                
+                    <!-- Card 3 -->
+                    <div class="card">
+                        <p class="heading">Data Science</p>
+                        <p>DigiSamaksh IT</p>
+                        <p>BI & Analytics</p>
+                        <button class="know-more-btn" onclick="showPopup('data-science-popup')">➜</button>
+                    </div>
+                
+                    <!-- Card 4 -->
+                    <div class="card">
+                        <p class="heading">Web Development</p>
+                        <p>Shivanjali Society</p>
+                        <p>Backend Services</p>
+                        <button class="know-more-btn" onclick="showPopup('web-dev-popup')">➜</button>
+                    </div>
+                
+                    <!-- Card 5 -->
+                    <div class="card">
+                        <p class="heading">Backend Dev</p>
+                        <p>Sales Queen</p>
+                        <p>CodeIgniter & MySQL</p>
+                        <button class="know-more-btn" onclick="showPopup('backend-dev-popup')">➜</button>
+                    </div>
+                
+                    <!-- Card 6 -->
+                    <div class="card">
+                        <p class="heading">Android Dev</p>
+                        <p>Null Class</p>
+                        <p>Java & Firebase</p>
+                        <button class="know-more-btn" onclick="showPopup('android-dev-popup')">➜</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Popup Cards -->
+    <!-- Python Intern Popup -->
+    <div class="popup" id="python-intern-popup">
+        <div class="card">
+            <div class="card_title__container">
+                <span class="card_title">Python Intern - Evolve Robotics Lab</span>
+                <p class="card_paragraph">June 2023 - September 2023</p>
+            </div>
+            <hr class="line" />
+            <ul class="card__list">
+                <li class="card__list_item">
+                    <span class="check">✓</span>
+                    <span class="list_text">Developed ML models using TensorFlow & PyTorch</span>
+                </li>
+                <li class="card__list_item">
+                    <span class="check">✓</span>
+                    <span class="list_text">Implemented Computer Vision algorithms</span>
+                </li>
+                <li class="card__list_item">
+                    <span class="check">✓</span>
+                    <span class="list_text">Worked with Deep Learning applications</span>
+                </li>
+                <li class="card__list_item">
+                    <span class="check">✓</span>
+                    <span class="list_text">Used Google Colab and VS Code</span>
+                </li>
+            </ul>
+            <button class="button" onclick="closePopup('python-intern-popup')">Close</button>
+        </div>
+    </div>
+    <div class="popup" id="data-analytics-popup">
+        <div class="card">
+            <div class="card_title__container">
+                <span class="card_title">Data Analytics - MedTour Easy</span>
+                <p class="card_paragraph">October 2023 - November 2023</p>
+            </div>
+            <hr class="line" />
+            <ul class="card__list">
+                <li class="card__list_item">
+                    <span class="check">✓</span>
+                    <span class="list_text">Analyzed health data trends & insights</span>
+                </li>
+                <li class="card__list_item">
+                    <span class="check">✓</span>
+                    <span class="list_text">Used statistical tools for analysis</span>
+                </li>
+                <li class="card__list_item">
+                    <span class="check">✓</span>
+                    <span class="list_text">Created healthcare analytics reports</span>
+                </li>
+            </ul>
+            <button class="button" onclick="closePopup('data-analytics-popup')">Close</button>
+        </div>
+    </div>
+        <!-- Data Science Popup -->
+    <div class="popup" id="data-science-popup">
+        <div class="card">
+            <div class="card_title__container">
+                <span class="card_title">Data Science - DigiSamaksh IT</span>
+                <p class="card_paragraph">December 2023 - Present</p>
+            </div>
+            <hr class="line" />
+            <ul class="card__list">
+                <li class="card__list_item">
+                    <span class="check">✓</span>
+                    <span class="list_text">Built interactive Power BI dashboards</span>
+                </li>
+                <li class="card__list_item">
+                    <span class="check">✓</span>
+                    <span class="list_text">Conducted employee performance analysis</span>
+                </li>
+                <li class="card__list_item">
+                    <span class="check">✓</span>
+                    <span class="list_text">Implemented predictive analytics models</span>
+                </li>
+                <li class="card__list_item">
+                    <span class="check">✓</span>
+                    <span class="list_text">Worked with Excel and Python for data analysis</span>
+                </li>
+            </ul>
+            <button class="button" onclick="closePopup('data-science-popup')">Close</button>
+        </div>
+    </div>
+
+    <!-- Web Development Popup -->
+    <div class="popup" id="web-dev-popup">
+        <div class="card">
+            <div class="card_title__container">
+                <span class="card_title">Web Development - Shivanjali Society</span>
+                <p class="card_paragraph">August 2023 - September 2023</p>
+            </div>
+            <hr class="line" />
+            <ul class="card__list">
+                <li class="card__list_item">
+                    <span class="check">✓</span>
+                    <span class="list_text">Enhanced frontend user experience</span>
+                </li>
+                <li class="card__list_item">
+                    <span class="check">✓</span>
+                    <span class="list_text">Implemented responsive design patterns</span>
+                </li>
+                <li class="card__list_item">
+                    <span class="check">✓</span>
+                    <span class="list_text">Integrated RESTful APIs</span>
+                </li>
+                <li class="card__list_item">
+                    <span class="check">✓</span>
+                    <span class="list_text">Implemented JWT authentication</span>
+                </li>
+            </ul>
+            <button class="button" onclick="closePopup('web-dev-popup')">Close</button>
+        </div>
+    </div>
+
+    <!-- Backend Development Popup -->
+    <div class="popup" id="backend-dev-popup">
+        <div class="card">
+            <div class="card_title__container">
+                <span class="card_title">Backend Developer - Sales Queen</span>
+                <p class="card_paragraph">March 2023 - August 2023</p>
+            </div>
+            <hr class="line" />
+            <ul class="card__list">
+                <li class="card__list_item">
+                    <span class="check">✓</span>
+                    <span class="list_text">Developed with CodeIgniter framework</span>
+                </li>
+                <li class="card__list_item">
+                    <span class="check">✓</span>
+                    <span class="list_text">Implemented CRUD operations</span>
+                </li>
+                <li class="card__list_item">
+                    <span class="check">✓</span>
+                    <span class="list_text">Created GPS data roadmaps</span>
+                </li>
+                <li class="card__list_item">
+                    <span class="check">✓</span>
+                    <span class="list_text">Optimized MySQL database queries</span>
+                </li>
+            </ul>
+            <button class="button" onclick="closePopup('backend-dev-popup')">Close</button>
+        </div>
+    </div>
+
+    <!-- Android Development Popup -->
+    <div class="popup" id="android-dev-popup">
+        <div class="card">
+            <div class="card_title__container">
+                <span class="card_title">Android Developer - Null Class</span>
+                <p class="card_paragraph">May 2023 - August 2023</p>
+            </div>
+            <hr class="line" />
+            <ul class="card__list">
+                <li class="card__list_item">
+                    <span class="check">✓</span>
+                    <span class="list_text">Developed Android apps using Java</span>
+                </li>
+                <li class="card__list_item">
+                    <span class="check">✓</span>
+                    <span class="list_text">Integrated Firebase Authentication</span>
+                </li>
+                <li class="card__list_item">
+                    <span class="check">✓</span>
+                    <span class="list_text">Implemented Flutter SDK frontend</span>
+                </li>
+                <li class="card__list_item">
+                    <span class="check">✓</span>
+                    <span class="list_text">Managed real-time database operations</span>
+                </li>
+            </ul>
+            <button class="button" onclick="closePopup('android-dev-popup')">Close</button>
+        </div>
+    </div>
+    <script>
+        function showPopup(id) {
+            document.getElementById(id).style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function closePopup(id) {
+            document.getElementById(id).style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        // Close popup when clicking overlay
+        document.getElementById('overlay').addEventListener('click', function() {
+            const popups = document.getElementsByClassName('popup');
+            for(let popup of popups) {
+                popup.style.display = 'none';
+            }
+            this.style.display = 'none';
+        });
+
+        // Close popup with ESC key
+        document.addEventListener('keydown', function(event) {
+            if(event.key === 'Escape') {
+                const popups = document.getElementsByClassName('popup');
+                for(let popup of popups) {
+                    popup.style.display = 'none';
+                }
+                document.getElementById('overlay').style.display = 'none';
+            }
+        });
+
+        // Background image handling
+        function preloadImages() {
+            const img = new Image();
+            img.src = 'image.png';
+            img.onload = () => console.log('Background image preloaded');
+        }
+
+        function adjustLayout() {
+            const backgroundContainer = document.querySelector('.background-container');
+            backgroundContainer.style.width = window.innerWidth + 'px';
+            backgroundContainer.style.height = window.innerHeight + 'px';
+        }
+
+        window.addEventListener('load', preloadImages);
+        window.addEventListener('load', adjustLayout);
+        window.addEventListener('resize', adjustLayout);
+    </script>
+    <style>
+        :root {
+    --white: hsl(0, 0%, 100%);
+    --black: hsl(240, 15%, 9%);
+    --paragraph: hsl(0, 0%, 83%);
+    --line: hsl(240, 9%, 17%);
+    --primary: hsl(266, 92%, 58%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.background-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('image/image.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0.7);
+    z-index: -1;
+    animation: parallax 10s infinite alternate;
+}
+
+@keyframes parallax {
+    0% { background-position: center; }
+    100% { background-position: center 10%; }
+}
+
+button {
+    width: 135px;
+    height: 62px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 17px;
+    border-radius: 1rem;
+    border: none;
+    position: relative;
+    left: 90%;
+    top: 80%;
+    background: #100720;
+    transition: 0.1s;
+}
+
+button::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+    filter: blur(15px);
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+button:active {
+    transform: scale(0.9) rotate(3deg);
+    background: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+    transition: 0.5s;
+}
+
+.banner-container {
+    position: absolute;
+    top: 50%;
+    left: 43%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    width: 80vw;
+    height: 80vh;
+    padding: 2em;
+}
+
+.banner {
+    position: relative;
+    width: 120%;
+    height: 80%;
+    padding: 40px;
+    background: transparent;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 
+        0 0 20px rgb(0, 0, 0),
+        0 0 40px rgb(10, 41, 43),
+        0 0 80px rgb(0, 0, 0);
+    animation: glowAnimation 3s ease-in-out infinite alternate;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px;
+    max-width: 100%;
+    margin-top: 20px;
+}
+
+.card {
+    position: relative;
+    width: 210px;
+    height: 270px;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 12px;
+    gap: 12px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    left: -5px;
+    margin: auto;
+    width: 200px;
+    height: 264px;
+    border-radius: 15px;
+    background: linear-gradient(-45deg, #1cc2ff 0%, #ff261b 100%);
+    z-index: -10;
+    pointer-events: none;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(-45deg, #1cffa4 0%, #ff01aee6 100%);
+    transform: translate3d(0, 0, 0) scale(0.95);
+    filter: blur(40px);
+}
+
+.heading {
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: white;
+}
+
+.card p:not(.heading) {
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.card:hover::after {
+    filter: blur(50px);
+}
+
+.card:hover::before {
+    transform: rotate(-90deg) scaleX(1.34) scaleY(0.77);
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.know-more-btn {
+    background: linear-gradient(-45deg, #1cc2ff 0%, #ff261b 100%);
+    border: none;
+    bottom: 40%;
+    left: 80%;
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    padding: 8px 15px;
+    border-radius: 15px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: transform 0.3s ease;
+}
+
+.know-more-btn:hover {
+    transform: scale(1.05);
+}
+
+.content {
+    text-align: center;
+    padding: 20px;
+    color: white;
+}
+
+.content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    backdrop-filter: blur(5px);
+}
+
+.popup .card {
+    width: 24rem;
+    height: auto;
+    background-color: hsla(240, 15%, 9%, 1);
+    background-image: radial-gradient(
+        at 88% 40%,
+        hsla(240, 15%, 9%, 1) 0px,
+        transparent 85%
+    ),
+    radial-gradient(at 49% 30%, hsla(240, 15%, 9%, 1) 0px, transparent 85%),
+    radial-gradient(at 14% 26%, hsla(240, 15%, 9%, 1) 0px, transparent 85%),
+    radial-gradient(at 0% 64%, hsla(263, 93%, 56%, 1) 0px, transparent 85%),
+    radial-gradient(at 41% 94%, hsla(284, 100%, 84%, 1) 0px, transparent 85%),
+    radial-gradient(at 100% 99%, hsla(306, 100%, 57%, 1) 0px, transparent 85%);
+}
+
+.popup .card_title__container {
+    margin-bottom: 1rem;
+}
+
+.popup .card_title {
+    font-size: 1.2rem;
+    color: var(--white);
+    font-weight: bold;
+}
+
+.popup .card_paragraph {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--paragraph);
+}
+
+.popup .line {
+    width: 100%;
+    height: 1px;
+    background-color: var(--line);
+    margin: 1rem 0;
+}
+
+.popup .card__list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.popup .card__list_item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+.popup .check {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: var(--primary);
+    border-radius: 50%;
+}
+
+.popup .check_svg {
+    width: 1rem;
+    height: 1rem;
+    fill: var(--black);
+}
+
+.popup .list_text {
+    color: var(--white);
+    font-size: 0.9rem;
+}
+
+.popup .button {
+    width: 50%;
+    right: 60%;
+    left: 50%;
+    padding: 0.8rem;
+    background-image: linear-gradient(
+        0deg,
+        rgba(94, 58, 238, 1) 0%,
+        rgba(197, 107, 240, 1) 100%
+    );
+    color: var(--white);
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.popup .button:hover {
+    transform: scale(1.02);
+}
+
+@keyframes lights {
+    0% {
+        color: hsl(230, 40%, 80%);
+        text-shadow:
+            0 0 1em hsla(320, 100%, 50%, 0.2),
+            0 0 0.125em hsla(320, 100%, 60%, 0.3),
+            -1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+            1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+    }
+    30% { 
+        color: hsl(230, 80%, 90%);
+        text-shadow:
+            0 0 1em hsla(320, 100%, 50%, 0.5),
+            0 0 0.125em hsla(320, 100%, 60%, 0.5),
+            -0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+            0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+    }
+    100% {
+        color: hsl(230, 40%, 80%);
+        text-shadow:
+            0 0 1em hsla(320, 100%, 50%, 0.2),
+            0 0 0.125em hsla(320, 100%, 60%, 0.3),
+            1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+            -1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+    }
+}
+
+@keyframes glowAnimation {
+    0% { box-shadow: 0 0 20px rgb(0, 0, 0), 0 0 40px rgb(10, 41, 43), 0 0 80px rgb(0, 0, 0); }
+    100% { box-shadow: 0 0 30px rgb(0, 0, 0), 0 0 60px rgb(10, 41, 43), 0 0 120px rgb(0, 0, 0); }
+}
+
+@keyframes popupIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -48%) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.popup[style*="display: block"] {
+    animation: popupIn 0.3s ease-out forwards;
+}
+
+@media (max-width: 768px) {
+    .banner-container {
+        width: 95vw;
+        height: 85vh;
+        padding: 1em;
+    }
+    .cards-container {
+        gap: 15px;
+    }
+    .popup .card {
+        width: 90vw;
+    }
+}
+    </style>
+</body>
+</html>

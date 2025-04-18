@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Frontend.css">
+    <title>Portfolio Website</title>
+    <script defer src="main.js"></script>
+    <style>
+        @keyframes lights {
+            0% {
+                color: hsl(230, 40%, 80%);
+                text-shadow:
+                    0 0 1em hsla(320, 100%, 50%, 0.2),
+                    0 0 0.125em hsla(320, 100%, 60%, 0.3),
+                    -1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+                    1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+            }
+            30% { 
+                color: hsl(230, 80%, 90%);
+                text-shadow:
+                    0 0 1em hsla(320, 100%, 50%, 0.5),
+                    0 0 0.125em hsla(320, 100%, 60%, 0.5),
+                    -0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+                    0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+            }
+            40% { 
+                color: hsl(230, 100%, 95%);
+                text-shadow:
+                    0 0 1em hsla(320, 100%, 50%, 0.5),
+                    0 0 0.125em hsla(320, 100%, 90%, 0.5),
+                    -0.25em -0.125em 0.125em hsla(40, 100%, 60%, 0.2),
+                    0.25em 0.125em 0.125em hsla(200, 100%, 60%, 0.4);
+            }
+            70% {
+                color: hsl(230, 80%, 90%);
+                text-shadow:
+                    0 0 1em hsla(320, 100%, 50%, 0.5),
+                    0 0 0.125em hsla(320, 100%, 60%, 0.5),
+                    0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+                    -0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+            }
+            100% {
+                color: hsl(230, 40%, 80%);
+                text-shadow:
+                    0 0 1em hsla(320, 100%, 50%, 0.2),
+                    0 0 0.125em hsla(320, 100%, 60%, 0.3),
+                    1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+                    -1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10%;
+    background: rgba(0, 0, 0, 0.9);  /* Semi-transparent background */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;  /* Ensure header stays above other content */
+    backdrop-filter: blur(10px);  /* Optional: adds a blur effect to the background */
+">
+    <a href="#" class="logo" style="
+        color: aliceblue;
+        font-size: 6rem;
+        font-weight: 300;
+        text-decoration: none;
+        animation: lights 10s 750ms linear infinite;
+    ">AKASH J</a>
+    
+    <nav style="
+        display: flex;
+        gap: 2rem;
+    ">
+        <a href="#" class="active">Home</a>
+        <a href="project.html">Projects</a>
+        <a href="skills.html">Skills</a>
+        <a href="education.html">Education</a>
+        <a href="experience.html">Experience</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+<section class="home">
+    <div class="home-img">
+        <img src="image/profile.jpg" alt="">
+    </div>
+    <div class="home-content">
+        <h1>Hi, It's <class="logo" style="
+            text-decoration: none;
+            animation: lights 10s 750ms linear infinite;
+        ">AKASH </a></h1>
+        <h3 class="typing-text">I'm a <span></span></h3>
+        <p>AI Enthusiast | LLM Practitioner | Data Science Explorer </p>
+        <div>
+            <ul> 
+              <li>
+                <a href="#">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span class="fa fa-facebook"></span>
+                </a> 
+              </li>
+              <li>
+                <a href="#">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span class="fa fa-twitter"></span>
+                </a> 
+              </li>
+              <li>
+                <a href="#">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span class="fa fa-instagram"></span>
+                </a> 
+              </li>
+              <li>
+                <a href="#">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span class="fa fa-linkedin"></span>
+                </a> 
+              </li>
+            </ul>  
+          </div>
+        <a href="#" class="btn">Hire me</a>
+    </div>
+    <main>
+        <div class="card">
+            <pixel-canvas></pixel-canvas>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentcolor" viewBox="0 0 256 256">
+            <path d="M216,42H40A14,14,0,0,0,26,56V200a14,14,0,0,0,14,14H216a14,14,0,0,0,14-14V56A14,14,0,0,0,216,42ZM40,54H216a2,2,0,0,1,2,2V98H38V56A2,2,0,0,1,40,54ZM38,200V110H98v92H40A2,2,0,0,1,38,200Zm178,2H110V110H218v90A2,2,0,0,1,216,202Z"></path>
+            </svg>
+            <button>Layout</buton>
+        </div>
+        
+        <div class="card" style="--active-color: #e0f2fe">
+            <pixel-canvas data-gap="10" data-speed="25" data-colors="#e0f2fe, #7dd3fc, #0ea5e9"></pixel-canvas>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentcolor" viewBox="0 0 256 256">
+            <path d="M67.84,92.61,25.37,128l42.47,35.39a6,6,0,1,1-7.68,9.22l-48-40a6,6,0,0,1,0-9.22l48-40a6,6,0,0,1,7.68,9.22Zm176,30.78-48-40a6,6,0,1,0-7.68,9.22L230.63,128l-42.47,35.39a6,6,0,1,0,7.68,9.22l48-40a6,6,0,0,0,0-9.22Zm-81.79-89A6,6,0,0,0,154.36,38l-64,176A6,6,0,0,0,94,221.64a6.15,6.15,0,0,0,2,.36,6,6,0,0,0,5.64-3.95l64-176A6,6,0,0,0,162.05,34.36Z"></path>
+            </svg>
+            <button>Code</buton>
+        </div>
+        
+        <div class="card" style="--active-color: #fef08a">
+            <pixel-canvas data-gap="3" data-speed="20" data-colors="#fef08a, #fde047, #eab308"></pixel-canvas>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentcolor" viewBox="0 0 256 256">
+            <path d="M180,146H158V110h22a34,34,0,1,0-34-34V98H110V76a34,34,0,1,0-34,34H98v36H76a34,34,0,1,0,34,34V158h36v22a34,34,0,1,0,34-34ZM158,76a22,22,0,1,1,22,22H158ZM54,76a22,22,0,0,1,44,0V98H76A22,22,0,0,1,54,76ZM98,180a22,22,0,1,1-22-22H98Zm12-70h36v36H110Zm70,92a22,22,0,0,1-22-22V158h22a22,22,0,0,1,0,44Z"></path>
+            </svg>
+            <button>Command</buton>
+        </div>
+        
+        <div class="card" style="--active-color: #fecdd3">
+            <pixel-canvas data-gap="6" data-speed="80" data-colors="#fecdd3, #fda4af, #e11d48" data-no-focus></pixel-canvas>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentcolor" viewBox="0 0 256 256">
+            <path d="M222,67.34a33.81,33.81,0,0,0-10.64-24.25C198.12,30.56,176.68,31,163.54,44.18L142.82,65l-.63-.63a22,22,0,0,0-31.11,0l-9,9a14,14,0,0,0,0,19.81l3.47,3.47L53.14,149.1a37.81,37.81,0,0,0-9.84,36.73l-8.31,19a11.68,11.68,0,0,0,2.46,13A13.91,13.91,0,0,0,47.32,222,14.15,14.15,0,0,0,53,220.82L71,212.92a37.92,37.92,0,0,0,35.84-10.07l52.44-52.46,3.47,3.48a14,14,0,0,0,19.8,0l9-9a22.06,22.06,0,0,0,0-31.13l-.66-.65L212,91.85A33.76,33.76,0,0,0,222,67.34Zm-123.61,127a26,26,0,0,1-26,6.47,6,6,0,0,0-4.17.24l-20,8.75a2,2,0,0,1-2.09-.31l9.12-20.9a5.94,5.94,0,0,0,.19-4.31A25.91,25.91,0,0,1,56,166h70.78ZM138.78,154H65.24l48.83-48.84,36.76,36.78Zm64.77-70.59L178.17,108.9a6,6,0,0,0,0,8.47l4.88,4.89a10,10,0,0,1,0,14.15l-9,9a2,2,0,0,1-2.82,0l-60.69-60.7a2,2,0,0,1,0-2.83l9-9a10,10,0,0,1,14.14,0l4.89,4.89a6,6,0,0,0,4.24,1.75h0a6,6,0,0,0,4.25-1.77L172,52.66c8.57-8.58,22.51-9,31.07-.85a22,22,0,0,1,.44,31.57Z"></path>
+            </svg>
+            <button>Dropper</buton>
+        </div>
+        </main>
+    </section>
+    <img src="image/AI.png" style="position: relative;left: 80%;bottom: 42%;width: 18vw;cursor: pointer; transition: 0.2s linear;">
+
+<style>
+    /* Hide default cursor everywhere */
+    * {
+        cursor: none !important;
+    }
+
+    .cursor {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 9999;
+    }
+
+    .cursor::before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 50%;
+        background: linear-gradient(45deg, #ff0080, #00ff8c, #00bfff);
+        animation: rotateGradient 3s infinite linear;
+    }
+
+    /* Cursor tail */
+    .cursor-tail {
+        width: 10px;
+        height: 10px;
+        position: fixed;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9998;
+        background: linear-gradient(45deg, #ff0080, #00ff8c, #00bfff);
+        transition: all 0.1s ease;
+        animation: rotateGradient 3s infinite linear;
+    }
+
+    @keyframes rotateGradient {
+        0% {
+            transform: rotate(0deg);
+            filter: hue-rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+            filter: hue-rotate(360deg);
+        }
+    }
+</style>
+
+<section class="about" style="
+    padding: 200px 10%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,1));
+    color: white;
+    min-height: 200vh;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+">
+    <h2 style="
+        font-size: 6rem;
+        margin-bottom: 2rem;
+        position: relative;
+        display: inline-block;
+        background: linear-gradient(45deg, #ff0080, #00ff8c, #00bfff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: gradientText 5s linear infinite;
+    ">About Me</h2>
+
+    <div class="about-content" style="
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+    ">
+        <div class="about-text" style="
+            font-size: 2.1rem;
+            line-height: 2.8;
+            opacity: 0.9;
+        ">
+            <p style="margin-bottom: 1.5rem;">
+                Hello! I'm Akash, a passionate AI enthusiast and LLM practitioner with a deep fascination for the transformative potential of artificial intelligence. My journey in the tech world is driven by a relentless curiosity to explore and implement cutting-edge AI solutions.
+            </p>
+            
+            <p style="margin-bottom: 1.5rem;">
+                As a Data Science Explorer, I specialize in:
+            </p>
+            
+            <ul style="
+                list-style: none;
+                padding: 0;
+                margin-bottom: 1.5rem;
+            ">
+                <li style="
+                    margin-bottom: 1rem;
+                    padding-left: 2rem;
+                    position: relative;
+                ">
+                    <span style="
+                        position: absolute;
+                        left: 0;
+                        color: #00ff8c;
+                    ">▹</span> 
+                    Large Language Models (LLM) Development and Implementation
+                </li>
+                <li style="
+                    margin-bottom: 1rem;
+                    padding-left: 2rem;
+                    position: relative;
+                ">
+                    <span style="
+                        position: absolute;
+                        left: 0;
+                        color: #00ff8c;
+                    ">▹</span> 
+                    Machine Learning & Deep Learning
+                </li>
+                <li style="
+                    margin-bottom: 1rem;
+                    padding-left: 2rem;
+                    position: relative;
+                ">
+                    <span style="
+                        position: absolute;
+                        left: 0;
+                        color: #00ff8c;
+                    ">▹</span> 
+                    Natural Language Processing
+                </li>
+                <li style="
+                    margin-bottom: 1rem;
+                    padding-left: 2rem;
+                    position: relative;
+                ">
+                    <span style="
+                        position: absolute;
+                        left: 0;
+                        color: #00ff8c;
+                    ">▹</span> 
+                    Data Analytics & Visualization
+                </li>
+            </ul>
+
+            <p style="margin-bottom: 1.5rem;">
+                My goal is to bridge the gap between complex AI technologies and practical applications, creating solutions that make a real-world impact. I'm constantly learning and adapting to the rapidly evolving AI landscape.
+            </p>
+        </div>
+
+        <div class="about-stats" style="
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    ">
+        <div class="stat-box" style="
+            background: rgba(255,255,255,0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+        " onmouseover="this.style.boxShadow='0 0 10px #f0bcbc, 0 0 40px #df4204, 0 0 80px #9b1102'; 
+                    this.style.transform='translateY(-10px)'" 
+        onmouseout="this.style.boxShadow='none'; 
+                    this.style.transform='translateY(0)'">
+            <h3 style="color: #00ff8c;font-size: 3rem; margin-bottom: 1rem;">Projects</h3>
+            <span style="font-size: 3rem; font-weight: bold;">15+</span>
+        </div>
+
+        <div class="stat-box" style="
+            background: rgba(255,255,255,0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+        " onmouseover="this.style.boxShadow='0 0 10px #f0bcbc, 0 0 40px #df4204, 0 0 80px #9b1102'; 
+                    this.style.transform='translateY(-10px)'" 
+        onmouseout="this.style.boxShadow='none'; 
+                    this.style.transform='translateY(0)'">
+            <h3 style="color: #ff0080;font-size: 3rem; margin-bottom: 1rem;">Experience</h3>
+            <span style="font-size: 3rem; font-weight: bold;">2+ Years</span>
+        </div>
+
+        <div class="stat-box" style="
+            background: rgba(255,255,255,0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+        " onmouseover="this.style.boxShadow='0 0 10px #f0bcbc, 0 0 40px #df4204, 0 0 80px #9b1102'; 
+                    this.style.transform='translateY(-10px)'" 
+        onmouseout="this.style.boxShadow='none'; 
+                    this.style.transform='translateY(0)'">
+            <h3 style="color: #00bfff;font-size: 3rem; margin-bottom: 1rem;">Certifications</h3>
+            <span style="font-size: 3rem; font-weight: bold;">10+</span>
+        </div>
+
+        <div class="stat-box" style="
+            background: rgba(255,255,255,0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+        " onmouseover="this.style.boxShadow='0 0 10px #f0bcbc, 0 0 40px #df4204, 0 0 80px #9b1102'; 
+                    this.style.transform='translateY(-10px)'" 
+        onmouseout="this.style.boxShadow='none'; 
+                    this.style.transform='translateY(0)'">
+            <h3 style="color: #ffd700;font-size: 3rem; margin-bottom: 1rem;">Skills</h3>
+            <span style="font-size: 3rem; font-weight: bold;">20+</span>
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes gradientText {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+</style>
+</body>
+</html>

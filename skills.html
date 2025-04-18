@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <title>Skills</title>
+    <style>
+      /* Hide default cursor everywhere */
+      * {
+          cursor: none !important;
+        }
+    
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+        }
+    
+        .cursor::before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff0080, #00ff8c, #00bfff);
+            animation: rotateGradient 3s infinite linear;
+        }
+    
+        /* Cursor tail */
+        .cursor-tail {
+            width: 10px;
+            height: 10px;
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            background: linear-gradient(45deg, #ff0080, #00ff8c, #00bfff);
+            transition: all 0.1s ease;
+            animation: rotateGradient 3s infinite linear;
+        }
+    
+        @keyframes rotateGradient {
+            0% {
+                transform: rotate(0deg);
+                filter: hue-rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+                filter: hue-rotate(360deg);
+            }
+        }
+    </style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body, html {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .background-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('image/image.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: brightness(0.7);
+            z-index: -1;
+            animation: parallax 10s infinite alternate;
+        }
+
+        @keyframes parallax {
+            0% { background-position: center; }
+            100% { background-position: center 10%; }
+        }
+        button {
+          width: 135px;
+          height: 62px;
+          cursor: pointer;
+          color: #fff;
+          font-size: 17px;
+          border-radius: 1rem;
+          border: none;
+          position: relative;
+          left: 90%;
+          top: 80%;
+          background: #100720;
+          transition: 0.1s;
+        }
+
+        button::after {
+          content: '';
+          width: 100%;
+          height: 100%;
+          background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2% );
+          filter: blur(15px);
+          z-index: -1;
+          position: absolute;
+          left: 0;
+          top: 0;
+        }
+
+        button:active {
+          transform: scale(0.9) rotate(3deg);
+          background: radial-gradient( circle farthest-corner at 10% 20%,  rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2% );
+          transition: 0.5s;
+        }
+
+
+        /* Banner Container */
+        .banner-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+            width: 80vw;
+            height: 80vh;
+            padding: 2em;
+        }
+
+        /* Banner Styles */
+        .banner {
+            position: relative;
+            width: 100%;
+            height: 120%;
+            left: 0; /* Remove the left offset */
+            bottom: 10%;
+            padding: 40px;
+            background: transparent;
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 
+                0 0 20px rgb(0, 0, 0),
+                0 0 40px rgb(10, 41, 43),
+                0 0 80px rgb(0, 0, 0);
+            animation: glowAnimation 3s ease-in-out infinite alternate;
+        }
+
+        /* Animated Borders */
+        .banner::before,
+        .banner::after,
+        .banner span::before,
+        .banner span::after {
+            content: '';
+            position: absolute;
+            background: linear-gradient(45deg, #ffffff, #a4a7a5, #000000);
+        }
+
+        /* Border Positions */
+        .banner::before {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            animation: borderLeft 3s linear infinite;
+        }
+
+        .banner::after {
+            top: 0;
+            right: 0;
+            width: 2px;
+            height: 100%;
+            animation: borderTop 3s linear infinite;
+        }
+
+        .banner span::before {
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 2px;
+            animation: borderRight 3s linear infinite;
+        }
+
+        .banner span::after {
+            bottom: 0;
+            left: 0;
+            width: 2px;
+            height: 100%;
+            animation: borderBottom 3s linear infinite;
+        }
+
+        /* Content Styles */
+        .content {
+            height: 100%;
+            overflow-y: auto;
+            padding: 20px;
+            color: white;
+        }
+
+        /* Scrollbar Styles */
+        .content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .content::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .content::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+
+        /* Media query for responsive design */
+        @media (max-width: 768px) {
+            .banner-container {
+                width: 95vw;
+                height: 85vh;
+                padding: 1em;
+            }
+        }
+
+        /* Animations */
+        @keyframes borderLeft {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        @keyframes borderTop {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        @keyframes borderRight {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        @keyframes borderBottom {
+            0% { transform: translateY(100%); }
+            100% { transform: translateY(-100%); }
+        }
+
+        @keyframes glowAnimation {
+            0% { box-shadow: 0 0 20px rgb(0, 0, 0), 0 0 40px rgb(10, 41, 43), 0 0 80px rgb(0, 0, 0); }
+            100% { box-shadow: 0 0 30px rgb(0, 0, 0), 0 0 60px rgb(10, 41, 43), 0 0 120px rgb(0, 0, 0); }
+        }
+
+        /* Header Style */
+        .content h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Lights Animation */
+        @keyframes lights {
+            0% {
+                color: hsl(230, 40%, 80%);
+                text-shadow:
+                    0 0 1em hsla(320, 100%, 50%, 0.2),
+                    0 0 0.125em hsla(320, 100%, 60%, 0.3),
+                    -1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+                    1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+            }
+            30% { 
+                color: hsl(230, 80%, 90%);
+                text-shadow:
+                    0 0 1em hsla(320, 100%, 50%, 0.5),
+                    0 0 0.125em hsla(320, 100%, 60%, 0.5),
+                    -0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+                    0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+            }
+            40% { 
+                color: hsl(230, 100%, 95%);
+                text-shadow:
+                    0 0 1em hsla(320, 100%, 50%, 0.5),
+                    0 0 0.125em hsla(320, 100%, 90%, 0.5),
+                    -0.25em -0.125em 0.125em hsla(40, 100%, 60%, 0.2),
+                    0.25em 0.125em 0.125em hsla(200, 100%, 60%, 0.4);
+            }
+            70% {
+                color: hsl(230, 80%, 90%);
+                text-shadow:
+                    0 0 1em hsla(320, 100%, 50%, 0.5),
+                    0 0 0.125em hsla(320, 100%, 60%, 0.5),
+                    0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+                    -0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+            }
+            100% {
+                color: hsl(230, 40%, 80%);
+                text-shadow:
+                    0 0 1em hsla(320, 100%, 50%, 0.2),
+                    0 0 0.125em hsla(320, 100%, 60%, 0.3),
+                    1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+                    -1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+            }
+        }
+    </style>
+</head>
+<body>
+  <!-- Image Background -->
+  <div class="background-container"></div>
+  <a href="Home.html" style="text-decoration: none;">
+    <button class="Btn">
+      <span class="svgContainer">
+        <img src="image/home.svg" alt="Home Icon" height="24" />
+      </span>
+      <span class="BG"></span>
+    </button>
+  </a>
+  
+  
+  <!-- Banner -->
+  <div class="banner-container">
+    <div class="banner">
+      <span></span>
+      <div class="content">
+        <h1>
+          <a href="#" class="logo" style="color: aliceblue; text-decoration: none; animation: lights 10s 750ms linear infinite;">
+            SKILLS
+          </a>
+        </h1>
+        
+        <div class="skills-container">
+          <section class="card__container">
+
+            <!-- Programming & Tools -->
+            <div class="card__bx" style="--clr: #5b98eb">
+              <div class="card__data">
+                <div class="card__icon">
+                  <img src="image/code-svgrepo-com (1).svg" alt="Icon" class="icon-svg">
+                </div>
+                
+                <div class="card__content">
+                  <h3>Programming & Tools</h3>
+                  <a href="#">Python</a>
+                  <a href="#">SQL</a>
+                  <a href="#">Html</a>
+                  <a href="#">CSS</a>
+                  <a href="#">Javascript</a>
+                  <a href="#">Excel</a>
+                  <a href="#">Power BI</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Databases & Big Data -->
+            <div class="card__bx" style="--clr: #ff497e">
+              <div class="card__data">
+                <div class="card__icon">
+                  <img src="image/database-svgrepo-com.svg" alt="Icon" class="icon-svg">
+                </div>
+                <div class="card__content">
+                  <h3>Databases & Big Data</h3>
+                  <a href="#">MySQL</a>
+                  <a href="#">PostgreSQL</a>
+                  <a href="#">MongoDB</a>
+                  <a href="#">Hadoop</a>
+                  <a href="#">Google BigQuery</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- LLMs & NLP -->
+            <div class="card__bx" style="--clr: #5b98eb">
+              <div class="card__data">
+                <div class="card__icon">
+                  <img src="image/googleassistant-svgrepo-com.svg" alt="Icon" class="icon-svg">
+                </div>
+                <div class="card__content">
+                  <h3>LLMs & NLP</h3>
+                  <a href="#">LLaMA</a>
+                  <a href="#">Hugging Face</a>
+                  <a href="#">LangChain</a>
+                  <a href="#">Prompt Engineering</a>
+                  <a href="#">RAG</a>
+                  <a href="#">NER</a>
+                  <a href="#">Text Summarization</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cloud & DevOps -->
+            <div class="card__bx" style="--clr: #5b98eb">
+              <div class="card__data">
+                <div class="card__icon">
+                  <img src="image/cloud-coding-svgrepo-com.svg" alt="Icon" class="icon-svg">
+                </div>
+                <div class="card__content">
+                  <h3>Cloud & DevOps</h3>
+                  <a href="#">AWS</a>
+                  <a href="#">S3</a>
+                  <a href="#">Lamba</a>
+                  <a href="#">RDS</a>
+                  <a href="#">Docker</a>
+                  <a href="#">Git</a>
+                  <a href="#">GitHub</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Machine Learning & DL -->
+            <div class="card__bx" style="--clr: #ff497e">
+              <div class="card__data">
+                <div class="card__icon">
+                  <img src="image/deep-learning-svgrepo-com.svg" alt="Icon" class="icon-svg">
+                </div>
+                <div class="card__content">
+                  <h3>Machine Learning & DL</h3>
+                  <a href="#">Scikit-learn</a>
+                  <a href="#">TensorFlow</a>
+                  <a href="#">PyTorch</a>
+                  <a href="#">CNN & RNN</a>
+                  <a href="#">LSTM</a>
+                  <a href="#">Transformers</a>
+                  <a href="#">Classification</a>
+                  <a href="#">Regression</a>
+                  <a href="#">Clustering</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- APIs & Deployment -->
+            <div class="card__bx" style="--clr: #5b98eb">
+              <div class="card__data">
+                <div class="card__icon">
+                  <img src="image/flood-control-situation-deployment-svgrepo-com.svg" alt="Icon" class="icon-svg">
+                </div>
+                <div class="card__content">
+                  <h3>APIs & Deployment</h3>
+                  <a href="#">OpenAI</a>
+                  <a href="#">Django</a>
+                  <a href="#">Docker</a>
+                  <a href="#">AWS</a>
+                  <a href="#">Flask</a>
+                  <a href="#">FastAPI</a>
+                  <a href="#">Streamlit</a>
+                </div>
+              </div>
+            </div>
+
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script>
+  function preloadImages() {
+      const img = new Image();
+      img.src = 'image.png';
+      img.onload = () => console.log('Background image preloaded');
+  }
+
+  // Preload the background image when the page loads
+  window.addEventListener('load', preloadImages);
+
+  // Optional: Ensure proper sizing on different devices
+  function adjustLayout() {
+      const backgroundContainer = document.querySelector('.background-container');
+      backgroundContainer.style.width = window.innerWidth + 'px';
+      backgroundContainer.style.height = window.innerHeight + 'px';
+  }
+
+  // Adjust layout on load and resize
+  window.addEventListener('load', adjustLayout);
+  window.addEventListener('resize', adjustLayout);
+</script>
+<style>
+  .card__container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  justify-content: center;
+  width: 100%;
+  max-width: 90%;
+  margin: auto;
+  padding: 60px 0;
+}
+
+.card__bx {
+  --dark-color: #1f18187e;
+  --dark-alt-color: #ffffff;
+  --white-color: #ffffff;
+  --button-color: #000000;
+  --transition: 0.4s ease;
+  
+  font-family: inherit;
+  height: 620px;
+  width: 320px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--dark-color);
+  transition: var(--transition);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+.card__bx:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px var(--clr), 0 0 30px var(--clr), 0 0 40px var(--clr);
+}
+
+.card__bx::before,
+.card__bx::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  transition: var(--transition);
+}
+
+.card__bx::before {
+  inset: -10px 50px;
+  border-top: 4px solid var(--clr);
+  transform: skewY(15deg);
+  border-bottom: 4px solid var(--clr);
+}
+
+.card__bx:hover::before {
+  inset: -10px 40px;
+  transform: skewY(0deg);
+}
+
+.card__bx::after {
+  inset: 60px -10px;
+  border-left: 4px solid var(--clr);
+  transform: skew(15deg);
+  border-right: 4px solid var(--clr);
+}
+
+.card__bx:hover::after {
+  inset: 40px -10px;
+  transform: skew(0deg);
+}
+
+.card__bx .card__data {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  text-align: center;
+  padding: 30px 20px;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.card__bx .card__data::-webkit-scrollbar {
+  width: 6px;
+}
+.card__bx .card__data::-webkit-scrollbar-thumb {
+  background-color: var(--clr);
+  border-radius: 5px;
+}
+
+.card__bx .card__data .card__icon {
+  height: 80px;
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  color: var(--clr);
+  background-color: var(--dark-color);
+  box-shadow: 0 0 15px var(--clr);
+  border-radius: 50%;
+  transition: var(--transition);
+}
+.icon-svg {
+  width: 60px;
+  height: 60px;
+  transition: 0.3s ease;
+  filter: drop-shadow(0 0 5px var(--clr));
+}
+
+.card__bx:hover .icon-svg {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 15px var(--clr)) brightness(1.2);
+}
+
+.card__bx:hover .card__icon {
+  color: var(--dark-color);
+  background-color: var(--clr);
+  box-shadow: 0 0 20px var(--clr), 0 0 40px var(--clr);
+}
+
+.card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card__content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--white-color);
+  transition: var(--transition);
+}
+
+.card__bx:hover .card__content h3 {
+  color: var(--dark-color);
+}
+
+.card__content a {
+  display: inline-block;
+  padding: 6px 12px;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 5px;
+  border: 2px solid var(--clr);
+  color: black;
+  background-color: var(--clr);
+  transition: var(--transition);
+  box-shadow: 0 0 8px var(--clr);
+}
+
+.card__bx:hover .card__content a {
+  color: var(--clr);
+  background-color: var(--dark-color);
+}
+
+.card__bx:hover .card__content a:hover {
+  background-color: var(--clr);
+  color: var(--dark-color);
+}
+
+</style>
+</html>

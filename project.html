@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project</title>
+    <style>
+        /* Hide default cursor everywhere */
+        * {
+            cursor: none !important;
+        }
+    
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+        }
+    
+        .cursor::before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff0080, #00ff8c, #00bfff);
+            animation: rotateGradient 3s infinite linear;
+        }
+    
+        /* Cursor tail */
+        .cursor-tail {
+            width: 10px;
+            height: 10px;
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            background: linear-gradient(45deg, #ff0080, #00ff8c, #00bfff);
+            transition: all 0.1s ease;
+            animation: rotateGradient 3s infinite linear;
+        }
+    
+        @keyframes rotateGradient {
+            0% {
+                transform: rotate(0deg);
+                filter: hue-rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+                filter: hue-rotate(360deg);
+            }
+        }
+    </style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body, html {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        /* Video Background */
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .video-background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+        button {
+          width: 135px;
+          height: 62px;
+          cursor: pointer;
+          color: #fff;
+          font-size: 17px;
+          border-radius: 1rem;
+          border: none;
+          position: relative;
+          left: 90%;
+          top: 100%;
+          background: #100720;
+          transition: 0.1s;
+        }
+
+        button::after {
+          content: '';
+          width: 100%;
+          height: 100%;
+          background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2% );
+          filter: blur(15px);
+          z-index: -1;
+          position: absolute;
+          left: 0;
+          top: 0;
+        }
+
+        button:active {
+          transform: scale(0.9) rotate(3deg);
+          background: radial-gradient( circle farthest-corner at 10% 20%,  rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2% );
+          transition: 0.5s;
+        }
+        /* Banner Container */
+        .banner-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+            width: 80vw;
+            height: 80vh;
+            padding: 2em;
+        }
+
+        /* Banner Styles */
+        .banner {
+            position: relative;
+            width: 100%;
+            height: 120%;
+            right: 15%;
+            bottom: 10%;
+            padding: 40px;
+            background: transparent;
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 
+                0 0 20px rgb(0, 0, 0),
+                0 0 40px rgb(10, 41, 43),
+                0 0 80px rgb(0, 0, 0);
+            animation: glowAnimation 3s ease-in-out infinite alternate;
+        }
+
+        /* Animated Borders */
+        .banner::before,
+        .banner::after,
+        .banner span::before,
+        .banner span::after {
+            content: '';
+            position: absolute;
+            background: linear-gradient(45deg, #ffffff, #a4a7a5, #000000);
+        }
+
+        /* Border Positions */
+        .banner::before {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            animation: borderLeft 3s linear infinite;
+        }
+
+        .banner::after {
+            top: 0;
+            right: 0;
+            width: 2px;
+            height: 100%;
+            animation: borderTop 3s linear infinite;
+        }
+
+        .banner span::before {
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 2px;
+            animation: borderRight 3s linear infinite;
+        }
+
+        .banner span::after {
+            bottom: 0;
+            left: 0;
+            width: 2px;
+            height: 100%;
+            animation: borderBottom 3s linear infinite;
+        }
+
+        /* Banner Container */
+        .banner-container2 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+            width: 80vw;
+            height: 80vh;
+            padding: 2em;
+        }
+
+        /* Banner Styles */
+        .banner {
+            position: relative;
+            width: 90%;
+            height: 120%;
+            right: 15%;
+            bottom: 10%;
+            padding: 40px;
+            background: transparent;
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 
+                0 0 20px rgb(0, 0, 0),
+                0 0 40px rgb(10, 41, 43),
+                0 0 80px rgb(0, 0, 0);
+            animation: glowAnimation 3s ease-in-out infinite alternate;
+        }
+
+        /* Animated Borders */
+        .banner::before,
+        .banner::after,
+        .banner span::before,
+        .banner span::after {
+            content: '';
+            position: absolute;
+            background: linear-gradient(45deg, #ffffff, #a4a7a5, #000000);
+        }
+
+        /* Border Positions */
+        .banner::before {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            animation: borderLeft 3s linear infinite;
+        }
+
+        .banner::after {
+            top: 0;
+            right: 0;
+            width: 2px;
+            height: 100%;
+            animation: borderTop 3s linear infinite;
+        }
+
+        .banner span::before {
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 2px;
+            animation: borderRight 3s linear infinite;
+        }
+
+        .banner span::after {
+            bottom: 0;
+            left: 0;
+            width: 2px;
+            height: 100%;
+            animation: borderBottom 3s linear infinite;
+        }
+
+        /* Content Styles */
+        .content {
+            height: 100%;
+            overflow-y: auto;
+            padding: 20px;
+            color: white;
+        }
+
+        /* Scrollbar Styles */
+        .content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .content::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .content::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+
+        .banner-container2 {
+            position: absolute;
+            top: 50%;
+            left: 75%; 
+            transform: translate(-50%, -50%);
+            z-index: 3;
+            width: 35vw;
+            height: 45vh; 
+            padding: 1em;
+        }
+
+        .banner2 {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            background: transparent;
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 
+                0 0 20px rgb(0, 0, 0),
+                0 0 40px rgb(10, 41, 43),
+                0 0 80px rgb(0, 0, 0);
+            animation: glowAnimation 3s ease-in-out infinite alternate;
+        }
+
+        /* Animated Borders for banner2 */
+        .banner2::before,
+        .banner2::after,
+        .banner2 span::before,
+        .banner2 span::after {
+            content: '';
+            position: absolute;
+            background: linear-gradient(45deg, #ffffff, #a4a7a5, #000000);
+        }
+
+        /* Border Positions for banner2 */
+        .banner2::before {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            animation: borderLeft 3s linear infinite;
+        }
+
+        .banner2::after {
+            top: 0;
+            right: 0;
+            width: 2px;
+            height: 100%;
+            animation: borderTop 3s linear infinite;
+        }
+
+        .banner2 span::before {
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 2px;
+            animation: borderRight 3s linear infinite;
+        }
+
+        .banner2 span::after {
+            bottom: 0;
+            left: 0;
+            width: 2px;
+            height: 100%;
+            animation: borderBottom 3s linear infinite;
+        }
+
+        .content2 {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-image {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        /* Media query for responsive design */
+        @media (max-width: 768px) {
+            .banner-container2 {
+                width: 45vw;
+                height: 45vh;
+                left: 70%;
+            }
+        }
+        /* Project Cards */
+        .project-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            color: #00ff8c;
+            margin-bottom: 15px;
+        }
+
+        .project-points {
+            list-style: none;
+        }
+
+        .project-points li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .project-points li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #ff0080;
+        }
+
+        /* Animations */
+        @keyframes borderLeft {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        @keyframes borderTop {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        @keyframes borderRight {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        @keyframes borderBottom {
+            0% { transform: translateY(100%); }
+            100% { transform: translateY(-100%); }
+        }
+
+        /* Header Style */
+        .content h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .banner-container {
+                width: 95vw;
+                height: 85vh;
+                padding: 1em;
+            }
+
+            .project-title {
+                font-size: 1.2rem;
+            }
+
+            .project-points li {
+                font-size: 0.9rem;
+            }
+        }
+                /* Add transition effect for smooth image changes */
+        .profile-image {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            object-fit: cover;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        /* Add hover effect to project cards */
+        .project-card {
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Optional: Add loading animation */
+        @keyframes imageLoading {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .loading {
+            animation: imageLoading 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <video autoplay muted loop playsinline class="video-background">
+            <source src="background.mp4" type="video/mp4">
+        </video>
+        <div class="overlay"></div>
+    </div>
+    <!-- Banner -->
+    <div class="banner-container">
+        <a href="Home.html" style="text-decoration: none;">
+            <button class="Btn">
+              <span class="svgContainer">
+                <img src="image/home.svg" alt="Home Icon" height="24" />
+              </span>
+              <span class="BG"></span>
+            </button>
+        </a>
+        <div class="banner">
+            <span></span>
+            <div class="content">
+                <h1>    <a href="#" class="logo" style="
+                    color: aliceblue;
+                    text-decoration: none;
+                    animation: lights 10s 750ms linear infinite;
+                ">PROJECTS</a></h1>
+                <div class="project-card" data-image="image\iot.png">
+                    <h2 class="project-title">Predictive Maintenance for Industrial IoT</h2>
+                    <ul class="project-points">
+                        <li>Developed an advanced predictive maintenance system using sensor data and machine learning to forecast equipment failures with 95% accuracy</li>
+                        <li>Implemented real-time anomaly detection using LSTM autoencoders and created dynamic maintenance schedules using reinforcement learning</li>
+                        <li>Reduced downtime by 40% and maintenance costs by 35% through predictive insights and automated alert systems</li>
+                    </ul>
+                </div>
+                <div class="project-card" data-image="image\weather.png">
+                    <h2 class="project-title">Multi-variate Time Series Forecasting for Energy Grid Optimization</h2>
+                    <ul class="project-points">
+                        <li >Built a hybrid forecasting system combining Transformer networks and Prophet models for multi-scale energy demand prediction</li>
+                        <li >Integrated weather data, historical consumption patterns, and social events using attention mechanisms for enhanced accuracy</li>
+                        <li >Achieved 97% accuracy in 24-hour forecasts and 92% for weekly predictions, enabling optimal resource allocation</li>
+                    </ul>
+                </div>
+                <div class="project-card" data-image="image\market.png">
+                    <h2 class="project-title">Automated ML Pipeline for Real-time Market Analysis</h2>
+                    <ul class="project-points">
+                        <li>Designed an end-to-end automated pipeline using Airflow and MLflow for real-time market sentiment analysis and trend prediction</li>
+                        <li>Implemented automated feature engineering, model selection, and hyperparameter tuning using Optuna and AutoML techniques</li>
+                        <li>Reduced model deployment time by 70% and achieved 88% accuracy in market trend predictions with continuous model retraining</li>
+                    </ul>
+                </div>
+                <div class="project-card" data-image="image\voice.png">
+                    <h2 class="project-title">Voice Command Recognition System</h2>
+                    <ul class="project-points">
+                        <li>Designed a speech-to-text model capable of recognizing voice commands and executing predefined tasks</li>
+                        <li>Applied deep learning techniques using TensorFlow and pre-trained ASR (Automatic Speech Recognition) models</li>
+                    </ul>
+                </div>
+
+                <div class="project-card" data-image="image\text.png">
+                    <h2 class="project-title">Task Management System</h2>
+                    <ul class="project-points">
+                        <li>Developed a full-stack Management web application using Python (Flask/Django), PHP, SQL (MySQL), and JavaScript</li>
+                        <li>Implemented user authentication, task creation, and real-time updates with data visualization for task tracking</li>
+                    </ul>
+                </div>
+
+                <div class="project-card" data-image="image\text.png">
+                    <h2 class="project-title">Speech-to-Text Transcription System</h2>
+                    <ul class="project-points">
+                        <li>Developed an AI-powered transcription system using Python, Google Speech-to-Text API, and NLP techniques</li>
+                        <li>Integrated language models for enhanced punctuation and grammar correction</li>
+                    </ul>
+                </div>
+
+                <div class="project-card" data-image="iot.jpg">
+                    <h2 class="project-title">Real-Time AI Voice Logger</h2>
+                    <ul class="project-points">
+                        <li>Worked on a logging system that records and transcribes real-time conversations for call centers and interviews</li>
+                        <li>Implemented speaker diarization to differentiate multiple speakers within the same conversation</li>
+                    </ul>
+                </div>
+
+                <div class="project-card" data-image="iot.jpg">
+                    <h2 class="project-title">Chat Application</h2>
+                    <ul class="project-points">
+                        <li>Designed a real-time end to end chatting app using Python (Django channels), JavaScript (Socket.io), PHP, and SQL</li>
+                        <li>Enabled private and group messaging, file sharing, and end-to-end encryption for secure communication</li>
+                    </ul>
+                </div>
+
+                <div class="project-card" data-image="iot.jpg">
+                    <h2 class="project-title">Bird Detection and Collision Avoidance on Drones</h2>
+                    <ul class="project-points">
+                        <li>Using PIR sensors, thermal cameras, and ML algorithms for 360-degree bird detection within 150-meter radius</li>
+                        <li>Includes simulation and field testing, with continuous learning for improved accuracy and real-time monitoring</li>
+                    </ul>
+                </div>
+
+                <div class="project-card" data-image="iot.jpg">
+                    <h2 class="project-title">Humanoid Speaking Animation Face</h2>
+                    <ul class="project-points">
+                        <li>Developed animation face converting text to animation using PyTorch and Keras for deep learning models</li>
+                        <li>Implemented lip-sync animations using Rhubarb Lip Sync and MoviePy for video creation</li>
+                    </ul>
+                </div>
+
+                <div class="project-card" data-image="iot.jpg">
+                    <h2 class="project-title">Natural Language Understanding for Dialog Systems</h2>
+                    <ul class="project-points">
+                        <li>Developed NLU module for dialog system handling user inputs in specific domains</li>
+                        <li>Ensured smooth interaction through robust backend and intuitive frontend</li>
+                    </ul>
+                </div>
+                <div class="project-card" data-image="iot.jpg">
+                    <h2 class="project-title">Fraud Detection in FinTech</h2>
+                    <ul class="project-points">
+                        <li>Developed an fraud detection system using anomaly detection, XGBoost and deep learning models to identify suspicious financial transactions</li>
+                        <li>Deployed using AWS Lambda & FastAPI handling millions of transactions daily</li>
+                    </ul>
+                </div>
+                <div class="project-card" data-image="iot.jpg">
+                    <h2 class="project-title">Real-Time India's GDP Rate Dashboard</h2>
+                    <ul class="project-points">
+                        <li>Developed a real-time economic analytics dashboard to visualize India's GDP trends, inflation and sector-wise growth</li>
+                        <li>Used Time Series Forecasting (ARIMA, Prophet) & Deep Learning models (LSTMs) for GDP prediction with 92% accuracy</li>
+                    </ul>
+                </div>
+                <div class="project-card" data-image="iot.jpg">
+                    <h2 class="project-title">Predicting Audience Ratings for Movies</h2>
+                    <ul class="project-points">
+                        <li>Built a machine learning pipeline to predict movie ratings using sentiment analysis NLP and regression models by Power BI dashboard</li>
+                        <li>Engineered advanced features from reviews using BERT embeddings, TF-IDF vectorization and topic modeling</li>
+                        <li>Trained models like Random Forest, Gradient Boosting and LSTMs by achieving 90%+ accuracy</li>
+                    </ul>
+                </div>
+                <div class="project-card" data-image="iot.jpg">
+                    <h2 class="project-title">Zomato Customer Growth Strategy Analysis</h2>
+                    <ul class="project-points">
+                        <li>Designed an AI-powered recommendation engine to predict and optimize customer engagement strategies by real-time business intelligence dashboard in Power BI</li>
+                        <li>Built an LSTM-based demand forecasting model, boosting accuracy by 20%</li>
+                    </ul>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="banner-container2">
+        <div class="banner2">
+            <span></span>
+            <div class="content2">
+                <img src="default-image.jpg" alt="Project Image" class="profile-image" id="projectImage">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Ensure video fills screen on resize
+        window.addEventListener('resize', function() {
+            const video = document.querySelector('.video-background');
+            const container = document.querySelector('.video-container');
+            container.style.width = window.innerWidth + 'px';
+            container.style.height = window.innerHeight + 'px';
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+        const projectCards = document.querySelectorAll('.project-card');
+        const projectImage = document.getElementById('projectImage');
+        
+        // Default image
+        const defaultImage = 'default-image.jpg';
+        
+        // Image preloading
+        const imageCache = new Map();
+        
+        // Preload all images
+        projectCards.forEach(card => {
+            const imagePath = card.dataset.image;
+            if (imagePath) {
+                const img = new Image();
+                img.src = imagePath;
+                imageCache.set(imagePath, img);
+            }
+        });
+
+        // Add hover effect
+        projectCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                const imagePath = this.dataset.image;
+                if (imagePath) {
+                    projectImage.style.opacity = '0';
+                    setTimeout(() => {
+                        projectImage.src = imagePath;
+                        projectImage.style.opacity = '1';
+                    }, 300);
+                }
+            });
+
+            // Optional: Return to default image when not hovering over any card
+            card.addEventListener('mouseleave', function() {
+                projectImage.style.opacity = '0';
+                setTimeout(() => {
+                    projectImage.src = defaultImage;
+                    projectImage.style.opacity = '1';
+                }, 300);
+            });
+        });
+    });
+
+        function preloadImages() {
+            const imagePromises = Array.from(document.querySelectorAll('.project-card'))
+                .map(card => {
+                    return new Promise((resolve, reject) => {
+                        const img = new Image();
+                        img.onload = resolve;
+                        img.onerror = reject;
+                        img.src = card.dataset.image;
+                    });
+                });
+
+            Promise.all(imagePromises)
+                .then(() => console.log('All images preloaded'))
+                .catch(err => console.error('Error preloading images:', err));
+        }
+
+        // Call this function when the page loads
+        window.addEventListener('load', preloadImages);
+    </script>
+    <style>
+        @keyframes lights {
+            0% {
+                color: hsl(230, 40%, 80%);
+                text-shadow:
+                    0 0 1em hsla(320, 100%, 50%, 0.2),
+                    0 0 0.125em hsla(320, 100%, 60%, 0.3),
+                    -1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+                    1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+            }
+            30% { 
+                color: hsl(230, 80%, 90%);
+                text-shadow:
+                    0 0 1em hsla(320, 100%, 50%, 0.5),
+                    0 0 0.125em hsla(320, 100%, 60%, 0.5),
+                    -0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+                    0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+            }
+            40% { 
+                color: hsl(230, 100%, 95%);
+                text-shadow:
+                    0 0 1em hsla(320, 100%, 50%, 0.5),
+                    0 0 0.125em hsla(320, 100%, 90%, 0.5),
+                    -0.25em -0.125em 0.125em hsla(40, 100%, 60%, 0.2),
+                    0.25em 0.125em 0.125em hsla(200, 100%, 60%, 0.4);
+            }
+            70% {
+                color: hsl(230, 80%, 90%);
+                text-shadow:
+                    0 0 1em hsla(320, 100%, 50%, 0.5),
+                    0 0 0.125em hsla(320, 100%, 60%, 0.5),
+                    0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+                    -0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+            }
+            100% {
+                color: hsl(230, 40%, 80%);
+                text-shadow:
+                    0 0 1em hsla(320, 100%, 50%, 0.2),
+                    0 0 0.125em hsla(320, 100%, 60%, 0.3),
+                    1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+                    -1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+            }
+        }
+    </style>
+</body>
+</html>

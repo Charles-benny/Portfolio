@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <title>Skills</title>
+    <style>
+      /* Hide default cursor everywhere */
+      * {
+          cursor: none !important;
+      }
+  
+      .cursor {
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          position: fixed;
+          pointer-events: none;
+          z-index: 9999;
+      }
+  
+      .cursor::before {
+          content: '';
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          border-radius: 50%;
+          background: linear-gradient(45deg, #ff0080, #00ff8c, #00bfff);
+          animation: rotateGradient 3s infinite linear;
+      }
+  
+      /* Cursor tail */
+      .cursor-tail {
+          width: 10px;
+          height: 10px;
+          position: fixed;
+          border-radius: 50%;
+          pointer-events: none;
+          z-index: 9998;
+          background: linear-gradient(45deg, #ff0080, #00ff8c, #00bfff);
+          transition: all 0.1s ease;
+          animation: rotateGradient 3s infinite linear;
+      }
+  
+      @keyframes rotateGradient {
+          0% {
+              transform: rotate(0deg);
+              filter: hue-rotate(0deg);
+          }
+          100% {
+              transform: rotate(360deg);
+              filter: hue-rotate(360deg);
+          }
+      }
+  </style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body, html {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        .background-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('image/image.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: brightness(0.7);
+            z-index: -1;
+            animation: parallax 10s infinite alternate;
+        }
+
+        @keyframes parallax {
+            0% { background-position: center; }
+            100% { background-position: center 10%; }
+        }
+        button {
+          width: 135px;
+          height: 62px;
+          cursor: pointer;
+          color: #fff;
+          font-size: 17px;
+          border-radius: 1rem;
+          border: none;
+          position: relative;
+          left: 90%;
+          top: 80%;
+          background: #100720;
+          transition: 0.1s;
+        }
+
+        button::after {
+          content: '';
+          width: 100%;
+          height: 100%;
+          background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2% );
+          filter: blur(15px);
+          z-index: -1;
+          position: absolute;
+          left: 0;
+          top: 0;
+        }
+
+        button:active {
+          transform: scale(0.9) rotate(3deg);
+          background: radial-gradient( circle farthest-corner at 10% 20%,  rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2% );
+          transition: 0.5s;
+        }
+        /* Banner Container */
+        .banner-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+            width: 80vw;
+            height: 80vh;
+            padding: 2em;
+        }
+
+        /* Banner Styles */
+        .banner {
+            position: relative;
+            width: 100%;
+            height: 120%;
+            left: 0; /* Remove the left offset */
+            bottom: 10%;
+            padding: 40px;
+            background: transparent;
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 
+                0 0 20px rgb(0, 0, 0),
+                0 0 40px rgb(10, 41, 43),
+                0 0 80px rgb(0, 0, 0);
+            animation: glowAnimation 3s ease-in-out infinite alternate;
+        }
+
+
+
+        /* Border Positions */
+        .banner::before {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            animation: borderLeft 3s linear infinite;
+        }
+
+        .banner::after {
+            top: 0;
+            right: 0;
+            width: 2px;
+            height: 100%;
+            animation: borderTop 3s linear infinite;
+        }
+
+        .banner span::before {
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 2px;
+            animation: borderRight 3s linear infinite;
+        }
+
+        .banner span::after {
+            bottom: 0;
+            left: 0;
+            width: 2px;
+            height: 100%;
+            animation: borderBottom 3s linear infinite;
+        }
+
+        /* Content Styles */
+        .content {
+            height: 100%;
+            overflow-y: auto;
+            padding: 20px;
+            color: white;
+        }
+
+        /* Scrollbar Styles */
+        .content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .content::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .content::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+
+        /* Media query for responsive design */
+        @media (max-width: 768px) {
+            .banner-container {
+                width: 95vw;
+                height: 85vh;
+                padding: 1em;
+            }
+        }
+
+        /* Animations */
+        @keyframes borderLeft {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        @keyframes borderTop {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        @keyframes borderRight {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        @keyframes borderBottom {
+            0% { transform: translateY(100%); }
+            100% { transform: translateY(-100%); }
+        }
+
+        @keyframes glowAnimation {
+            0% { box-shadow: 0 0 20px rgb(0, 0, 0), 0 0 40px rgb(10, 41, 43), 0 0 80px rgb(0, 0, 0); }
+            100% { box-shadow: 0 0 30px rgb(0, 0, 0), 0 0 60px rgb(10, 41, 43), 0 0 120px rgb(0, 0, 0); }
+        }
+
+        /* Header Style */
+        .content h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Lights Animation */
+        @keyframes lights {
+            0% {
+                color: hsl(230, 40%, 80%);
+                text-shadow:
+                    0 0 1em hsla(320, 100%, 50%, 0.2),
+                    0 0 0.125em hsla(320, 100%, 60%, 0.3),
+                    -1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+                    1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+            }
+            30% { 
+                color: hsl(230, 80%, 90%);
+                text-shadow:
+                    0 0 1em hsla(320, 100%, 50%, 0.5),
+                    0 0 0.125em hsla(320, 100%, 60%, 0.5),
+                    -0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+                    0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+            }
+            40% { 
+                color: hsl(230, 100%, 95%);
+                text-shadow:
+                    0 0 1em hsla(320, 100%, 50%, 0.5),
+                    0 0 0.125em hsla(320, 100%, 90%, 0.5),
+                    -0.25em -0.125em 0.125em hsla(40, 100%, 60%, 0.2),
+                    0.25em 0.125em 0.125em hsla(200, 100%, 60%, 0.4);
+            }
+            70% {
+                color: hsl(230, 80%, 90%);
+                text-shadow:
+                    0 0 1em hsla(320, 100%, 50%, 0.5),
+                    0 0 0.125em hsla(320, 100%, 60%, 0.5),
+                    0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+                    -0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+            }
+            100% {
+                color: hsl(230, 40%, 80%);
+                text-shadow:
+                    0 0 1em hsla(320, 100%, 50%, 0.2),
+                    0 0 0.125em hsla(320, 100%, 60%, 0.3),
+                    1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+                    -1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+            }
+        }
+    </style>
+</head>
+<body>
+  <!-- Image Background -->
+  <div class="background-container"></div>
+  <a href="Home.html" style="text-decoration: none;">
+    <button class="Btn">
+      <span class="svgContainer">
+        <img src="image/home.svg" alt="Home Icon" height="24" />
+      </span>
+      <span class="BG"></span>
+    </button>
+  </a>
+  <!-- Banner -->
+  <div class="banner-container">
+    <div class="banner">
+      <span></span>
+      <div class="content">
+        <h1>
+          <a href="#" class="logo" style="color: aliceblue; text-decoration: none; animation: lights 10s 750ms linear infinite;">
+            EDUCATION
+          </a>
+        </h1>
+
+        <div class="skills-container">
+            <div class="container noselect">
+                <div class="canvas">
+                  <div class="tracker tr-1"></div>
+                  <div class="tracker tr-2"></div>
+                  <div class="tracker tr-3"></div>
+                  <div class="tracker tr-4"></div>
+                  <div class="tracker tr-5"></div>
+                  <div class="tracker tr-6"></div>
+                  <div class="tracker tr-7"></div>
+                  <div class="tracker tr-8"></div>
+                  <div class="tracker tr-9"></div>
+                  <div id="card">
+                    <div class="card-content">
+                      <div class="card-glare"></div>
+                      <div class="cyber-lines">
+                        <span></span><span></span><span></span><span></span>
+                      </div>
+                      <p id="prompt">10th GRADE</p>
+                      <div class="title">Montfort School Chinnakanal<br />2018-2019</div>
+                      <div class="glowing-elements">
+                        <div class="glow-1"></div>
+                        <div class="glow-2"></div>
+                        <div class="glow-3"></div>
+                      </div>
+                      <div class="subtitle">
+                        <span>[ CBSE ]</span>
+                        <span class="highlight"></span>
+                      </div>
+                      <div class="card-particles">
+                        <span></span><span></span><span></span> <span></span><span></span
+                        ><span></span>
+                      </div>
+                      <div class="corner-elements">
+                        <span></span><span></span><span></span><span></span>
+                      </div>
+                      <div class="scan-line"></div>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+            </div>
+            <div class="container noselect">
+                <div class="canvas">
+                  <div class="tracker tr-1"></div>
+                  <div class="tracker tr-2"></div>
+                  <div class="tracker tr-3"></div>
+                  <div class="tracker tr-4"></div>
+                  <div class="tracker tr-5"></div>
+                  <div class="tracker tr-6"></div>
+                  <div class="tracker tr-7"></div>
+                  <div class="tracker tr-8"></div>
+                  <div class="tracker tr-9"></div>
+                  <div id="card">
+                    <div class="card-content">
+                      <div class="card-glare"></div>
+                      <div class="cyber-lines">
+                        <span></span><span></span><span></span><span></span>
+                      </div>
+                      <p id="prompt">12th GRADE</p>
+                      <div class="title">Montfort Valley School <br />2020-2021</div>
+                      <div class="glowing-elements">
+                        <div class="glow-1"></div>
+                        <div class="glow-2"></div>
+                        <div class="glow-3"></div>
+                      </div>
+                      <div class="subtitle">
+                        <span>[ CBSE ]</span>
+                        <span class="highlight">Computer Science </span>
+                      </div>
+                      <div class="card-particles">
+                        <span></span><span></span><span></span> <span></span><span></span
+                        ><span></span>
+                      </div>
+                      <div class="corner-elements">
+                        <span></span><span></span><span></span><span></span>
+                      </div>
+                      <div class="scan-line"></div>
+                    </div>
+                  </div>
+                </div>
+            </div>   
+            <div class="container noselect">
+                <div class="canvas">
+                  <div class="tracker tr-1"></div>
+                  <div class="tracker tr-2"></div>
+                  <div class="tracker tr-3"></div>
+                  <div class="tracker tr-4"></div>
+                  <div class="tracker tr-5"></div>
+                  <div class="tracker tr-6"></div>
+                  <div class="tracker tr-7"></div>
+                  <div class="tracker tr-8"></div>
+                  <div class="tracker tr-9"></div>
+                  <div id="card">
+                    <div class="card-content">
+                      <div class="card-glare"></div>
+                      <div class="cyber-lines">
+                        <span></span><span></span><span></span><span></span>
+                      </div>
+                      <p id="prompt">BACHELORS</p>
+                      <div class="title">Dr. M.G.R. Educational and Research Institute<br />2021-2025</div>
+                      <div class="glowing-elements">
+                        <div class="glow-1"></div>
+                        <div class="glow-2"></div>
+                        <div class="glow-3"></div>
+                      </div>
+                      <div class="subtitle">
+                        <span>B. Tech</span>
+                        <span class="highlight">Computer Science and Engineering (AI)</span>
+                      </div>
+                      <div class="card-particles">
+                        <span></span><span></span><span></span> <span></span><span></span
+                        ><span></span>
+                      </div>
+                      <div class="corner-elements">
+                        <span></span><span></span><span></span><span></span>
+                      </div>
+                      <div class="scan-line"></div>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+            </div> 
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script>
+  function preloadImages() {
+      const img = new Image();
+      img.src = 'image.png';
+      img.onload = () => console.log('Background image preloaded');
+  }
+
+  // Preload the background image when the page loads
+  window.addEventListener('load', preloadImages);
+
+  // Optional: Ensure proper sizing on different devices
+  function adjustLayout() {
+      const backgroundContainer = document.querySelector('.background-container');
+      backgroundContainer.style.width = window.innerWidth + 'px';
+      backgroundContainer.style.height = window.innerHeight + 'px';
+  }
+
+  // Adjust layout on load and resize
+  window.addEventListener('load', adjustLayout);
+  window.addEventListener('resize', adjustLayout);
+</script>
+
+<style>
+.container {
+  position: relative;
+  width: 720px;
+  height: 270px;
+  transition: 200ms;
+}
+
+.container:active {
+  width: 180px;
+  height: 245px;
+}
+
+#card {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  transition: 700ms;
+  background: transparent;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  box-shadow:
+    0 0 20px rgba(0, 0, 0, 0.3),
+    inset 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+#prompt {
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  transition: 300ms ease-in-out;
+  position: absolute;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.title {
+  opacity: 0;
+  transition: 300ms ease-in-out;
+  position: absolute;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  text-align: center;
+  width: 100%;
+  padding-top: 20px;
+  background: linear-gradient(45deg, #00ffaa, #00a2ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 15px rgba(0, 255, 170, 0.3));
+  text-shadow:
+    0 0 10px rgba(92, 103, 255, 0.5),
+    0 0 20px rgba(92, 103, 255, 0.3);
+}
+
+.subtitle {
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 2px;
+  transform: translateY(30px);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.highlight {
+  color: #00ffaa;
+  margin-left: 5px;
+  background: linear-gradient(90deg, #5c67ff, #ad51ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+.glowing-elements {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.glow-1,
+.glow-2,
+.glow-3 {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 255, 170, 0.3) 0%,
+    rgba(0, 255, 170, 0) 70%
+  );
+  filter: blur(15px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glow-1 {
+  top: -20px;
+  left: -20px;
+}
+.glow-2 {
+  top: 50%;
+  right: -30px;
+  transform: translateY(-50%);
+}
+.glow-3 {
+  bottom: -20px;
+  left: 30%;
+}
+
+.card-particles span {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #00ffaa;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Hover effects */
+.tracker:hover ~ #card .title {
+  opacity: 1;
+  transform: translateY(-10px);
+}
+
+.tracker:hover ~ #card .glowing-elements div {
+  opacity: 1;
+}
+
+.tracker:hover ~ #card .card-particles span {
+  animation: particleFloat 2s infinite;
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(var(--x, 0) * 30px), calc(var(--y, 0) * 30px));
+    opacity: 0;
+  }
+}
+
+/* Particle positions */
+.card-particles span:nth-child(1) {
+  --x: 1;
+  --y: -1;
+  top: 40%;
+  left: 20%;
+}
+.card-particles span:nth-child(2) {
+  --x: -1;
+  --y: -1;
+  top: 60%;
+  right: 20%;
+}
+.card-particles span:nth-child(3) {
+  --x: 0.5;
+  --y: 1;
+  top: 20%;
+  left: 40%;
+}
+.card-particles span:nth-child(4) {
+  --x: -0.5;
+  --y: 1;
+  top: 80%;
+  right: 40%;
+}
+.card-particles span:nth-child(5) {
+  --x: 1;
+  --y: 0.5;
+  top: 30%;
+  left: 60%;
+}
+.card-particles span:nth-child(6) {
+  --x: -1;
+  --y: 0.5;
+  top: 70%;
+  right: 60%;
+}
+
+#card::before {
+  content: "";
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 255, 170, 0.1) 0%,
+    rgba(0, 162, 255, 0.05) 50%,
+    transparent 100%
+  );
+  filter: blur(20px);
+  opacity: 0;
+  width: 150%;
+  height: 150%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+}
+
+.tracker:hover ~ #card::before {
+  opacity: 1;
+}
+
+.tracker {
+  position: absolute;
+  z-index: 200;
+  width: 100%;
+  height: 100%;
+}
+
+.tracker:hover {
+  cursor: pointer;
+}
+
+.tracker:hover ~ #card #prompt {
+  opacity: 0;
+}
+
+.tracker:hover ~ #card {
+  transition: 300ms;
+  filter: brightness(1.1);
+}
+
+.container:hover #card::before {
+  transition: 200ms;
+  content: "";
+  opacity: 80%;
+}
+
+.canvas {
+  perspective: 800px;
+  inset: 0;
+  z-index: 200;
+  position: absolute;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "tr-1 tr-2 tr-3 tr-4 tr-5"
+    "tr-6 tr-7 tr-8 tr-9 tr-10"
+    "tr-11 tr-12 tr-13 tr-14 tr-15"
+    "tr-16 tr-17 tr-18 tr-19 tr-20"
+    "tr-21 tr-22 tr-23 tr-24 tr-25";
+}
+
+.tr-1 {
+  grid-area: tr-1;
+}
+
+.tr-2 {
+  grid-area: tr-2;
+}
+
+.tr-3 {
+  grid-area: tr-3;
+}
+
+.tr-4 {
+  grid-area: tr-4;
+}
+
+.tr-5 {
+  grid-area: tr-5;
+}
+
+.tr-6 {
+  grid-area: tr-6;
+}
+
+.tr-7 {
+  grid-area: tr-7;
+}
+
+.tr-8 {
+  grid-area: tr-8;
+}
+
+.tr-9 {
+  grid-area: tr-9;
+}
+
+.tr-10 {
+  grid-area: tr-10;
+}
+
+.tr-11 {
+  grid-area: tr-11;
+}
+
+.tr-12 {
+  grid-area: tr-12;
+}
+
+.tr-13 {
+  grid-area: tr-13;
+}
+
+.tr-14 {
+  grid-area: tr-14;
+}
+
+.tr-15 {
+  grid-area: tr-15;
+}
+
+.tr-16 {
+  grid-area: tr-16;
+}
+
+.tr-17 {
+  grid-area: tr-17;
+}
+
+.tr-18 {
+  grid-area: tr-18;
+}
+
+.tr-19 {
+  grid-area: tr-19;
+}
+
+.tr-20 {
+  grid-area: tr-20;
+}
+
+.tr-21 {
+  grid-area: tr-21;
+}
+
+.tr-22 {
+  grid-area: tr-22;
+}
+
+.tr-23 {
+  grid-area: tr-23;
+}
+
+.tr-24 {
+  grid-area: tr-24;
+}
+
+.tr-25 {
+  grid-area: tr-25;
+}
+
+.tr-1:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(20deg) rotateY(-10deg) rotateZ(0deg);
+}
+
+.tr-2:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(20deg) rotateY(-5deg) rotateZ(0deg);
+}
+
+.tr-3:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(20deg) rotateY(0deg) rotateZ(0deg);
+}
+
+.tr-4:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(20deg) rotateY(5deg) rotateZ(0deg);
+}
+
+.tr-5:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(20deg) rotateY(10deg) rotateZ(0deg);
+}
+
+.tr-6:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(10deg) rotateY(-10deg) rotateZ(0deg);
+}
+
+.tr-7:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(10deg) rotateY(-5deg) rotateZ(0deg);
+}
+
+.tr-8:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(10deg) rotateY(0deg) rotateZ(0deg);
+}
+
+.tr-9:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(10deg) rotateY(5deg) rotateZ(0deg);
+}
+
+.tr-10:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(10deg) rotateY(10deg) rotateZ(0deg);
+}
+
+.tr-11:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(0deg) rotateY(-10deg) rotateZ(0deg);
+}
+
+.tr-12:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(0deg) rotateY(-5deg) rotateZ(0deg);
+}
+
+.tr-13:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+}
+
+.tr-14:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(0deg) rotateY(5deg) rotateZ(0deg);
+}
+
+.tr-15:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(0deg) rotateY(10deg) rotateZ(0deg);
+}
+
+.tr-16:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(-10deg) rotateY(-10deg) rotateZ(0deg);
+}
+
+.tr-17:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(-10deg) rotateY(-5deg) rotateZ(0deg);
+}
+
+.tr-18:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(-10deg) rotateY(0deg) rotateZ(0deg);
+}
+
+.tr-19:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(-10deg) rotateY(5deg) rotateZ(0deg);
+}
+
+.tr-20:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(-10deg) rotateY(10deg) rotateZ(0deg);
+}
+
+.tr-21:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(-20deg) rotateY(-10deg) rotateZ(0deg);
+}
+
+.tr-22:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(-20deg) rotateY(-5deg) rotateZ(0deg);
+}
+
+.tr-23:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(-20deg) rotateY(0deg) rotateZ(0deg);
+}
+
+.tr-24:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(-20deg) rotateY(5deg) rotateZ(0deg);
+}
+
+.tr-25:hover ~ #card {
+  transition: 125ms ease-in-out;
+  transform: rotateX(-20deg) rotateY(10deg) rotateZ(0deg);
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+									supported by Chrome, Edge, Opera and Firefox */
+}
+
+.card-glare {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    125deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.05) 45%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 55%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+.cyber-lines span {
+  position: absolute;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(92, 103, 255, 0.2),
+    transparent
+  );
+}
+
+.cyber-lines span:nth-child(1) {
+  top: 20%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: lineGrow 3s linear infinite;
+}
+
+.cyber-lines span:nth-child(2) {
+  top: 40%;
+  right: 0;
+  width: 100%;
+  height: 1px;
+  transform: scaleX(0);
+  transform-origin: right;
+  animation: lineGrow 3s linear infinite 1s;
+}
+
+.cyber-lines span:nth-child(3) {
+  top: 60%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: lineGrow 3s linear infinite 2s;
+}
+
+.cyber-lines span:nth-child(4) {
+  top: 80%;
+  right: 0;
+  width: 100%;
+  height: 1px;
+  transform: scaleX(0);
+  transform-origin: right;
+  animation: lineGrow 3s linear infinite 1.5s;
+}
+
+.corner-elements span {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(92, 103, 255, 0.3);
+}
+
+.corner-elements span:nth-child(1) {
+  top: 10px;
+  left: 10px;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.corner-elements span:nth-child(2) {
+  top: 10px;
+  right: 10px;
+  border-left: 0;
+  border-bottom: 0;
+}
+
+.corner-elements span:nth-child(3) {
+  bottom: 10px;
+  left: 10px;
+  border-right: 0;
+  border-top: 0;
+}
+
+.corner-elements span:nth-child(4) {
+  bottom: 10px;
+  right: 10px;
+  border-left: 0;
+  border-top: 0;
+}
+
+.scan-line {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(92, 103, 255, 0.1),
+    transparent
+  );
+  transform: translateY(-100%);
+  animation: scanMove 2s linear infinite;
+}
+
+@keyframes lineGrow {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+}
+
+@keyframes scanMove {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* Modyfikacja istniejących styli */
+#card:hover .card-glare {
+  opacity: 1;
+}
+
+.corner-elements span {
+  transition: all 0.3s ease;
+}
+
+#card:hover .corner-elements span {
+  border-color: rgba(92, 103, 255, 0.8);
+  box-shadow: 0 0 10px rgba(92, 103, 255, 0.5);
+}
+  
+</style>
+
+</html>
